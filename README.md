@@ -1,7 +1,7 @@
 # Chapa Frontend Interview Assignment
 
 A modern React application built with TypeScript, Vite, and Tailwind CSS featuring role-based authentication and dashboard management.
-
+View Hosted App (https://chapa-frontend-interview-assignment-sand.vercel.app/)
 ## 🚀 Features
 
 - **Role-Based Authentication**: Support for three user roles (User, Admin, Super Admin)
