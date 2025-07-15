@@ -2,6 +2,11 @@
 
 A modern React application built with TypeScript, Vite, and Tailwind CSS featuring role-based authentication and dashboard management.
 View Hosted App (https://chapa-frontend-interview-assignment-sand.vercel.app/)
+<img width="1827" height="880" alt="Screenshot Dashboard" src="https://github.com/user-attachments/assets/7c7634e1-08ac-4c3b-b037-abf45c9df93c" />
+Super Admin Dash
+<img width="1807" height="875" alt="Screenshot Analytics" src="https://github.com/user-attachments/assets/3ef02302-d498-4bc6-be63-2f96b3c10a3b" />
+Analytics 
+
 ## 🚀 Features
 
 - **Role-Based Authentication**: Support for three user roles (User, Admin, Super Admin)
