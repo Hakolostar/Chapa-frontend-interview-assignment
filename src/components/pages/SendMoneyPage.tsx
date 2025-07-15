@@ -283,31 +283,31 @@ const SendMoneyPage: React.FC<SendMoneyPageProps> = ({ onNavigate }) => {
   }
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center space-x-4 mb-6">
+    <div className="space-y-4 sm:space-y-6">
+      {/* Header - Mobile responsive */}
+      <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4 sm:mb-6">
         <button
           onClick={handleBackToDashboard}
-          className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+          className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors self-start"
         >
-          <ArrowLeft className="w-5 h-5" />
-          <span>Back to Dashboard</span>
+          <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+          <span className="text-sm sm:text-base">Back to Dashboard</span>
         </button>
       </div>
       
-      <div className="flex items-center space-x-4 mb-6">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Send Money</h1>
+      <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4 sm:mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Send Money</h1>
         <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <DollarSign className="w-4 h-4" />
           <span>Available: {formatAmount(user?.balance || 0)}</span>
         </div>
       </div>
 
-      {/* Progress Steps */}
-      <div className="flex items-center justify-center space-x-4 mb-8">
+      {/* Progress Steps - Mobile responsive */}
+      <div className="flex items-center justify-center space-x-2 sm:space-x-4 mb-6 sm:mb-8 overflow-x-auto">
         {[1, 2, 3].map((step) => (
-          <div key={step} className="flex items-center">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+          <div key={step} className="flex items-center flex-shrink-0">
+            <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium ${
               currentStep >= step
                 ? 'bg-primary-600 text-white'
                 : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
@@ -315,7 +315,7 @@ const SendMoneyPage: React.FC<SendMoneyPageProps> = ({ onNavigate }) => {
               {step}
             </div>
             {step < 3 && (
-              <div className={`w-12 h-0.5 ${
+              <div className={`w-8 sm:w-12 h-0.5 ${
                 currentStep > step ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700'
               }`} />
             )}
@@ -323,7 +323,7 @@ const SendMoneyPage: React.FC<SendMoneyPageProps> = ({ onNavigate }) => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Main Form */}
         <div className="lg:col-span-2">
           <Card title="Transfer Details">
