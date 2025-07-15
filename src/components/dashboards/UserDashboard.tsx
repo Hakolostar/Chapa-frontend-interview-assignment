@@ -6,13 +6,14 @@ import Card from '../common/Card';
 import LoadingSpinner from '../common/LoadingSpinner';
 import { Wallet, TrendingUp, TrendingDown, Send, Clock, CheckCircle, XCircle } from 'lucide-react';
 
-const UserDashboard: React.FC = () => {
+interface UserDashboardProps {
+  onNavigate?: (page: string) => void;
+}
+
+const UserDashboard: React.FC<UserDashboardProps> = ({ onNavigate }) => {
   const { user } = useAuth();
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [loading, setLoading] = useState(true);
-  const [sendAmount, setSendAmount] = useState('');
-  const [recipient, setRecipient] = useState('');
-  const [isTransactionLoading, setIsTransactionLoading] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -32,26 +33,15 @@ const UserDashboard: React.FC = () => {
     }
   };
 
-  const handleSendMoney = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!sendAmount || !recipient) return;
+  const handleSendMoneyClick = () => {
+    if (onNavigate) {
+      onNavigate('send-money');
+    }
+  };
 
-    setIsTransactionLoading(true);
-    try {
-      await mockApiService.createTransaction({
-        userId: user!.id,
-        amount: parseFloat(sendAmount),
-        type: 'debit',
-        description: `Transfer to ${recipient}`,
-        status: 'pending'
-      });
-      setSendAmount('');
-      setRecipient('');
-      loadTransactions();
-    } catch (error) {
-      console.error('Error creating transaction:', error);
-    } finally {
-      setIsTransactionLoading(false);
+  const handleRequestMoneyClick = () => {
+    if (onNavigate) {
+      onNavigate('request-money');
     }
   };
 
@@ -85,61 +75,34 @@ const UserDashboard: React.FC = () => {
       </div>
 
       {/* Wallet Balance */}
-      <Card className="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+      <Card className="bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-700 border border-blue-200 dark:border-blue-600">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-blue-100 text-sm">Wallet Balance</p>
-            <p className="text-3xl font-bold">{formatAmount(user?.balance || 0)}</p>
+            <p className="text-blue-600 dark:text-blue-300 text-sm font-medium">Wallet Balance</p>
+            <p className="text-3xl font-bold text-blue-800 dark:text-blue-100">{formatAmount(user?.balance || 0)}</p>
           </div>
-          <Wallet className="w-12 h-12 text-blue-200" />
+          <Wallet className="w-12 h-12 text-blue-500 dark:text-blue-400" />
         </div>
       </Card>
 
       {/* Quick Actions */}
-      <Card title="Send Money">
-        <form onSubmit={handleSendMoney} className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Recipient Email
-              </label>
-              <input
-                type="email"
-                value={recipient}
-                onChange={(e) => setRecipient(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter recipient email"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Amount
-              </label>
-              <input
-                type="number"
-                value={sendAmount}
-                onChange={(e) => setSendAmount(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="0.00"
-                step="0.01"
-                required
-              />
-            </div>
-          </div>
-          <button
-            type="submit"
-            disabled={isTransactionLoading}
-            className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50"
+      <Card title="Quick Actions">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <button 
+            onClick={handleSendMoneyClick}
+            className="flex items-center justify-center space-x-3 p-4 bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-700 text-blue-800 dark:text-blue-100 border border-blue-200 dark:border-blue-600 rounded-lg hover:from-blue-200 hover:to-blue-300 dark:hover:from-blue-700 dark:hover:to-blue-600 transition-all duration-200 transform hover:scale-105"
           >
-            {isTransactionLoading ? (
-              <LoadingSpinner size="sm" />
-            ) : (
-              <Send className="w-4 h-4" />
-            )}
-            <span>Send Money</span>
+            <Send className="w-6 h-6" />
+            <span className="font-semibold">Send Money</span>
           </button>
-        </form>
+          
+          <button 
+            onClick={handleRequestMoneyClick}
+            className="flex items-center justify-center space-x-3 p-4 bg-gradient-to-r from-green-100 to-green-200 dark:from-green-800 dark:to-green-700 text-green-800 dark:text-green-100 border border-green-200 dark:border-green-600 rounded-lg hover:from-green-200 hover:to-green-300 dark:hover:from-green-700 dark:hover:to-green-600 transition-all duration-200 transform hover:scale-105">
+            <Wallet className="w-6 h-6" />
+            <span className="font-semibold">Request Money</span>
+          </button>
+        </div>
       </Card>
 
       {/* Recent Transactions */}

@@ -1,8 +1,10 @@
+export type UserRole = 'user' | 'admin' | 'super_admin';
+
 export interface User {
   id: string;
   name: string;
   email: string;
-  role: 'user' | 'admin' | 'super_admin';
+  role: UserRole;
   isActive: boolean;
   balance: number;
   createdAt: string;
@@ -33,5 +35,5 @@ export interface AuthState {
 
 export interface LoginCredentials {
   email: string;
-  role: 'user' | 'admin' | 'super_admin';
+  role: UserRole;
 }

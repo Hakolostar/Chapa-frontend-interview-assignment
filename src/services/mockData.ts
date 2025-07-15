@@ -3,7 +3,7 @@ import { User } from '../types';
 export const mockUsers: User[] = [
   {
     id: '1',
-    name: 'Abebe',
+    name: 'User user',
     email: 'user@chapa.com',
     role: 'user',
     isActive: true,

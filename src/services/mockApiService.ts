@@ -77,11 +77,17 @@ export const mockApiService = {
   getSystemStats: async (): Promise<SystemStats> => {
     return new Promise((resolve) => {
       setTimeout(() => {
+        // Calculate real stats from mockUsers
+        const activeUsers = mockUsers.filter(u => u.isActive && u.role === 'user').length;
+        const totalPayments = mockUsers.reduce((sum, user) => sum + user.balance, 0);
+        const totalTransactions = mockUsers.length * 25; // Average 25 transactions per user
+        const monthlyRevenue = totalPayments * 0.025; // 2.5% of total balance as monthly revenue
+        
         resolve({
-          totalPayments: 1250000,
-          activeUsers: 2847,
-          totalTransactions: 15642,
-          monthlyRevenue: 89500
+          totalPayments,
+          activeUsers,
+          totalTransactions,
+          monthlyRevenue
         });
       }, 900);
     });
@@ -93,6 +99,30 @@ export const mockApiService = {
         const newAdmin = addUser(adminData);
         resolve(newAdmin);
       }, 800);
+    });
+  },
+
+  createMoneyRequest: async (requestData: {
+    requesterId: string;
+    requesterEmail: string;
+    amount: number;
+    description: string;
+    dueDate?: string;
+    isUrgent: boolean;
+  }): Promise<{ id: string; url: string }> => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const requestId = Math.random().toString(36).substr(2, 9);
+        const requestUrl = `https://chapa.app/request/${requestId}`;
+        
+        // In a real app, you'd save the request data here
+        console.log('Creating money request:', requestData);
+        
+        resolve({
+          id: requestId,
+          url: requestUrl
+        });
+      }, 1000);
     });
   }
 };
