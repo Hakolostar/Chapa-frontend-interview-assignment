@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { CreditCard, User, Shield, ShieldCheck } from 'lucide-react';
+import { User, Shield, ShieldCheck } from 'lucide-react';
 import LoadingSpinner from '../common/LoadingSpinner';
+import Logo from '../common/Logo';
 
 const LoginForm: React.FC = () => {
   const [selectedRole, setSelectedRole] = useState<'user' | 'admin' | 'super_admin'>('user');
@@ -54,9 +55,8 @@ const LoginForm: React.FC = () => {
       <div className="max-w-md w-full">
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8">
           <div className="text-center mb-8">
-            <div className="flex justify-center items-center space-x-2 mb-4">
-              <CreditCard className="w-8 h-8 text-blue-600" />
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Chapa</h1>
+            <div className="flex justify-center items-center mb-4">
+              <Logo width={140} height={45} className="mb-2" />
             </div>
             <p className="text-gray-600 dark:text-gray-300">Select your role to continue</p>
           </div>

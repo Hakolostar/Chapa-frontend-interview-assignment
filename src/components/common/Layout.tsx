@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { LogOut, Settings, Home, Users, BarChart3, Menu, X, Search, Bell, Plus, MessageCircle, User, ChevronDown } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import Logo from './Logo';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -17,7 +18,30 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
   const [notificationDropdownOpen, setNotificationDropdownOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
   const [sidebarHovered, setSidebarHovered] = useState(false);
-  
+
+  // Update document title based on current page and user role
+  useEffect(() => {
+    const getPageTitle = () => {
+      const baseTitle = 'Chapa Financial Dashboard';
+      const roleTitle = user?.role ? ` - ${user.role.charAt(0).toUpperCase() + user.role.slice(1)}` : '';
+      
+      const pageTitles: { [key: string]: string } = {
+        dashboard: 'Dashboard',
+        users: 'User Management',
+        analytics: 'Analytics',
+        'send-money': 'Send Money',
+        'request-money': 'Request Money',
+        settings: 'System Settings',
+        profile: 'Profile Settings'
+      };
+      
+      const pageTitle = pageTitles[currentPage] || 'Dashboard';
+      return `${pageTitle}${roleTitle} | ${baseTitle}`;
+    };
+
+    document.title = getPageTitle();
+  }, [currentPage, user?.role]);
+
   const profileRef = useRef<HTMLDivElement>(null);
   const notificationRef = useRef<HTMLDivElement>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
@@ -158,10 +182,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
         {/* Sidebar Header */}
         <div className="flex items-center justify-between h-16 px-6 border-b dark:border-gray-700 flex-shrink-0">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">C</span>
-            </div>
-            <span className="text-xl font-bold text-gray-900 dark:text-white">Chapa</span>
+            <Logo width={100} height={32} className="hover:scale-105 transition-transform duration-200" />
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
@@ -248,7 +269,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
         {/* Top Header Bar - Sticky */}
         <header className="sticky top-0 bg-white dark:bg-gray-800 shadow-sm border-b dark:border-gray-700 z-40">
           <div className="flex items-center justify-between h-16 px-4 lg:px-6">
-            {/* Left side - Mobile menu button and Search */}
+            {/* Left side - Mobile menu button, Logo, and Search */}
             <div className="flex items-center flex-1">
               <button
                 onClick={() => setSidebarOpen(true)}
@@ -256,6 +277,11 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
               >
                 <Menu className="w-6 h-6" />
               </button>
+              
+              {/* Mobile Logo - shown only on small screens when sidebar is hidden */}
+              <div className="lg:hidden mr-4">
+                <Logo width={80} height={24} />
+              </div>
               
               {/* Search Bar */}
               <div className="relative w-64 md:w-96">
