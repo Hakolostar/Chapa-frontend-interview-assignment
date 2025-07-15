@@ -2,17 +2,17 @@
 
 A comprehensive React application built with TypeScript, Vite, and Tailwind CSS featuring role-based authentication, financial management tools, and advanced dashboard functionality.
 
-</br>
-View Hosted App (https://chapa-frontend-interview-assignment-sand.vercel.app/)
-</br>
-<img width="1827" height="880" alt="Screenshot Dashboard" src="https://github.com/user-attachments/assets/7c7634e1-08ac-4c3b-b037-abf45c9df93c" />
-</br>
-Super Admin Dashboard
-</br>
-<img width="1807" height="875" alt="Screenshot Analytics" src="https://github.com/user-attachments/assets/3ef02302-d498-4bc6-be63-2f96b3c10a3b" />
-</br>
-Analytics Dashboard
-</br>
+### 🔗 [Live App on Vercel](https://chapa-frontend-interview-assignment-sand.vercel.app/)
+
+### 📸 Super Admin Dashboard
+
+![Super Admin Dashboard](https://github.com/user-attachments/assets/7c7634e1-08ac-4c3b-b037-abf45c9df93c)
+
+---
+
+### 📊 Analytics Dashboard
+
+![Analytics Dashboard](https://github.com/user-attachments/assets/3ef02302-d498-4bc6-be63-2f96b3c10a3b)
 
 ## 🚀 Features
 
