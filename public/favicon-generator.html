@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favicon Creator</title>
+    <style>
+        canvas { border: 1px solid #ccc; margin: 10px; }
+        .canvas-container { display: inline-block; text-align: center; margin: 20px; }
+        .size-label { font-weight: bold; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Creating Chapa Favicons</h1>
+    
+    <div class="canvas-container">
+        <div class="size-label">16x16</div>
+        <canvas id="canvas16" width="16" height="16"></canvas>
+    </div>
+    
+    <div class="canvas-container">
+        <div class="size-label">32x32</div>
+        <canvas id="canvas32" width="32" height="32"></canvas>
+    </div>
+    
+    <div class="canvas-container">
+        <div class="size-label">48x48</div>
+        <canvas id="canvas48" width="48" height="48"></canvas>
+    </div>
+    
+    <div class="canvas-container">
+        <div class="size-label">64x64</div>
+        <canvas id="canvas64" width="64" height="64"></canvas>
+    </div>
+    
+    <div id="downloads"></div>
+
+    <script>
+        function createFavicon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas with white background
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, size, size);
+            
+            // Scale factor for the Chapa icon
+            const scale = size / 64;
+            
+            // Apply scaling
+            ctx.save();
+            ctx.scale(scale, scale);
+            ctx.translate(10, 5);
+            
+            // Draw simplified Chapa logo paths
+            // First path - light green
+            ctx.fillStyle = 'rgba(141, 198, 63, 0.7)';
+            ctx.beginPath();
+            ctx.moveTo(11.8, 26.2);
+            ctx.lineTo(35.3, 26.2);
+            ctx.quadraticCurveTo(35.3, 32.7, 28.8, 32.7);
+            ctx.lineTo(11.8, 32.7);
+            ctx.quadraticCurveTo(8.6, 32.7, 8.6, 29.4);
+            ctx.quadraticCurveTo(8.6, 26.2, 11.8, 26.2);
+            ctx.fill();
+            
+            // Second path - main green
+            ctx.fillStyle = '#7dc400';
+            ctx.beginPath();
+            ctx.moveTo(27.2, 17.4);
+            ctx.lineTo(22.4, 24);
+            ctx.lineTo(20.9, 26.1);
+            ctx.lineTo(16, 32.8);
+            ctx.quadraticCurveTo(12, 35, 8.5, 33.4);
+            ctx.quadraticCurveTo(5.9, 28.2, 7.8, 26);
+            ctx.quadraticCurveTo(9.8, 24, 11.7, 24.1);
+            ctx.lineTo(22.4, 24.1);
+            ctx.quadraticCurveTo(16.3, 17.6, 11.9, 17.6);
+            ctx.quadraticCurveTo(4.6, 18, 0, 23.6);
+            ctx.quadraticCurveTo(0, 30.1, 6, 30.1);
+            ctx.quadraticCurveTo(12.5, 30.1, 12.5, 30.1);
+            ctx.lineTo(29.7, 17.4);
+            ctx.quadraticCurveTo(33.4, 13.9, 27.2, 17.4);
+            ctx.fill();
+            
+            ctx.restore();
+            
+            return canvas.toDataURL('image/png');
+        }
+        
+        const sizes = [16, 32, 48, 64];
+        const downloads = document.getElementById('downloads');
+        
+        sizes.forEach(size => {
+            const canvas = document.getElementById(`canvas${size}`);
+            const dataUrl = createFavicon(canvas, size);
+            
+            const link = document.createElement('a');
+            link.download = `favicon-${size}x${size}.png`;
+            link.href = dataUrl;
+            link.textContent = `Download ${size}x${size} PNG`;
+            link.style.display = 'block';
+            link.style.margin = '5px 0';
+            downloads.appendChild(link);
+        });
+    </script>
+</body>
+</html>

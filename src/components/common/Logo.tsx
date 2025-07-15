@@ -8,8 +8,8 @@ interface LogoProps {
 
 export const Logo: React.FC<LogoProps> = ({ 
   className = '', 
-  width = 120, 
-  height = 48 
+  width = 140, 
+  height = 56 
 }) => {
   return (
     <div className={`inline-flex items-center ${className}`}>

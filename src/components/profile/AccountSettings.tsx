@@ -81,7 +81,7 @@ const AccountSettings: React.FC = () => {
           {/* Change Password */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <Shield className="w-5 h-5 text-blue-600" />
+              <Shield className="w-5 h-5 text-primary-600" />
               <h3 className="text-lg font-medium text-gray-900 dark:text-white">Change Password</h3>
             </div>
             <form onSubmit={handlePasswordSubmit} className="space-y-4">
@@ -96,7 +96,7 @@ const AccountSettings: React.FC = () => {
                       name="currentPassword"
                       value={passwordForm.currentPassword}
                       onChange={handlePasswordChange}
-                      className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                       required
                     />
                     <button
@@ -119,7 +119,7 @@ const AccountSettings: React.FC = () => {
                       name="newPassword"
                       value={passwordForm.newPassword}
                       onChange={handlePasswordChange}
-                      className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                       required
                     />
                     <button
@@ -142,7 +142,7 @@ const AccountSettings: React.FC = () => {
                       name="confirmPassword"
                       value={passwordForm.confirmPassword}
                       onChange={handlePasswordChange}
-                      className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                       required
                     />
                     <button
@@ -157,7 +157,7 @@ const AccountSettings: React.FC = () => {
               </div>
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
               >
                 Update Password
               </button>
@@ -177,8 +177,8 @@ const AccountSettings: React.FC = () => {
                 </span>
                 <button
                   onClick={() => handlePrivacyChange('twoFactorAuth')}
-                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                    privacySettings.twoFactorAuth ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'
+                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
+                    privacySettings.twoFactorAuth ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700'
                   }`}
                 >
                   <span
@@ -197,7 +197,7 @@ const AccountSettings: React.FC = () => {
       <Card title="Notification Preferences">
         <div className="space-y-4">
           <div className="flex items-center space-x-2 mb-4">
-            <Bell className="w-5 h-5 text-blue-600" />
+            <Bell className="w-5 h-5 text-primary-600" />
             <h3 className="text-lg font-medium text-gray-900 dark:text-white">Notification Settings</h3>
           </div>
           {Object.entries(notificationSettings).map(([key, value]) => (
@@ -212,8 +212,8 @@ const AccountSettings: React.FC = () => {
               </div>
               <button
                 onClick={() => handleNotificationChange(key)}
-                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                  value ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
+                  value ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700'
                 }`}
               >
                 <span
@@ -231,7 +231,7 @@ const AccountSettings: React.FC = () => {
       <Card title="Privacy Settings">
         <div className="space-y-6">
           <div className="flex items-center space-x-2 mb-4">
-            <Lock className="w-5 h-5 text-blue-600" />
+            <Lock className="w-5 h-5 text-primary-600" />
             <h3 className="text-lg font-medium text-gray-900 dark:text-white">Privacy Controls</h3>
           </div>
           <div>
@@ -247,7 +247,7 @@ const AccountSettings: React.FC = () => {
                     value={option}
                     checked={privacySettings.profileVisibility === option}
                     onChange={(e) => handlePrivacyChange('profileVisibility', e.target.value)}
-                    className="mr-3 text-blue-600 focus:ring-blue-500"
+                    className="mr-3"
                   />
                   <span className="text-sm text-gray-700 dark:text-gray-300 capitalize">{option}</span>
                 </label>
@@ -263,8 +263,8 @@ const AccountSettings: React.FC = () => {
               </div>
               <button
                 onClick={() => handlePrivacyChange('showEmail')}
-                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                  privacySettings.showEmail ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
+                  privacySettings.showEmail ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700'
                 }`}
               >
                 <span
@@ -282,8 +282,8 @@ const AccountSettings: React.FC = () => {
               </div>
               <button
                 onClick={() => handlePrivacyChange('showPhone')}
-                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                  privacySettings.showPhone ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
+                  privacySettings.showPhone ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700'
                 }`}
               >
                 <span

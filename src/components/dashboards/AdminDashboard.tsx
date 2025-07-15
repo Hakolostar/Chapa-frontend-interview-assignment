@@ -71,23 +71,23 @@ const AdminDashboard: React.FC = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card className="bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-700 border border-blue-200 dark:border-blue-600">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-blue-600 dark:text-blue-300 text-sm font-medium">Total Payments</p>
-              <p className="text-2xl font-bold text-blue-800 dark:text-blue-100">{formatAmount(stats?.totalPayments || 0)}</p>
-            </div>
-            <DollarSign className="w-8 h-8 text-blue-500 dark:text-blue-400" />
-          </div>
-        </Card>
-
         <Card className="bg-gradient-to-r from-green-100 to-green-200 dark:from-green-800 dark:to-green-700 border border-green-200 dark:border-green-600">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-green-600 dark:text-green-300 text-sm font-medium">Active Users</p>
-              <p className="text-2xl font-bold text-green-800 dark:text-green-100">{formatNumber(stats?.activeUsers || 0)}</p>
+              <p className="text-green-600 dark:text-green-300 text-sm font-medium">Total Payments</p>
+              <p className="text-2xl font-bold text-green-800 dark:text-green-100">{formatAmount(stats?.totalPayments || 0)}</p>
             </div>
-            <Users className="w-8 h-8 text-green-500 dark:text-green-400" />
+            <DollarSign className="w-8 h-8 text-green-500 dark:text-green-400" />
+          </div>
+        </Card>
+
+        <Card className="bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-700 border border-blue-200 dark:border-blue-600">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-blue-600 dark:text-blue-300 text-sm font-medium">Active Users</p>
+              <p className="text-2xl font-bold text-blue-800 dark:text-blue-100">{formatNumber(stats?.activeUsers || 0)}</p>
+            </div>
+            <Users className="w-8 h-8 text-blue-500 dark:text-blue-400" />
           </div>
         </Card>
 

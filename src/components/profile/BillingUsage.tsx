@@ -23,8 +23,8 @@ const BillingUsage: React.FC = () => {
   ];
 
   const usageMetrics = [
-    { label: 'Transactions Processed', value: currentUsage.transactions, icon: FileText, color: 'blue' },
-    { label: 'Transaction Volume', value: `$${currentUsage.volume.toLocaleString()}`, icon: DollarSign, color: 'green' },
+    { label: 'Transactions Processed', value: currentUsage.transactions, icon: FileText, color: 'green' },
+    { label: 'Transaction Volume', value: `$${currentUsage.volume.toLocaleString()}`, icon: DollarSign, color: 'blue' },
     { label: 'Total Fees', value: `$${currentUsage.fees.toLocaleString()}`, icon: TrendingUp, color: 'purple' },
     { label: 'Monthly Limit', value: `$${currentUsage.limit.toLocaleString()}`, icon: Settings, color: 'orange' },
   ];
@@ -55,11 +55,11 @@ const BillingUsage: React.FC = () => {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Billing & Usage</h1>
         <div className="flex space-x-3">
-          <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+          <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-gray-700 dark:text-gray-300">
             <Download className="w-4 h-4" />
             <span>Export Data</span>
           </button>
-          <button className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+          <button className="flex items-center space-x-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
             <Plus className="w-4 h-4" />
             <span>Add Payment Method</span>
           </button>
@@ -89,7 +89,7 @@ const BillingUsage: React.FC = () => {
             <select
               value={selectedPeriod}
               onChange={(e) => setSelectedPeriod(e.target.value)}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             >
               <option value="current">Current Month</option>
               <option value="last">Last Month</option>
@@ -107,7 +107,7 @@ const BillingUsage: React.FC = () => {
               </div>
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                 <div 
-                  className="bg-blue-600 h-2 rounded-full"
+                  className="bg-primary-600 h-2 rounded-full"
                   style={{ width: `${(currentUsage.volume / currentUsage.limit) * 100}%` }}
                 ></div>
               </div>
@@ -134,7 +134,7 @@ const BillingUsage: React.FC = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-600 rounded-lg">
             <div className="flex items-center space-x-4">
-              <div className="w-12 h-8 bg-blue-600 rounded flex items-center justify-center">
+              <div className="w-12 h-8 bg-primary-600 rounded flex items-center justify-center">
                 <CreditCard className="w-6 h-6 text-white" />
               </div>
               <div>
@@ -146,11 +146,11 @@ const BillingUsage: React.FC = () => {
               <span className="px-2 py-1 text-xs bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 rounded-full">
                 Primary
               </span>
-              <button className="text-blue-600 hover:text-blue-800 text-sm">Edit</button>
+              <button className="text-primary-600 hover:text-blue-800 text-sm">Edit</button>
             </div>
           </div>
 
-          <button className="w-full p-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg text-gray-600 dark:text-gray-400 hover:border-blue-400 hover:text-blue-600 transition-colors">
+          <button className="w-full p-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg text-gray-600 dark:text-gray-400 hover:border-blue-400 hover:text-primary-600 transition-colors">
             + Add New Payment Method
           </button>
         </div>
@@ -183,7 +183,7 @@ const BillingUsage: React.FC = () => {
                   </td>
                   <td className="py-3 px-4 text-gray-700 dark:text-gray-300">{bill.invoice}</td>
                   <td className="py-3 px-4">
-                    <button className="flex items-center space-x-1 text-blue-600 hover:text-blue-800 text-sm">
+                    <button className="flex items-center space-x-1 text-primary-600 hover:text-blue-800 text-sm">
                       <Download className="w-4 h-4" />
                       <span>Download</span>
                     </button>
@@ -204,7 +204,7 @@ const BillingUsage: React.FC = () => {
             <p className="text-sm text-gray-500 dark:text-gray-500">Next billing date: February 1, 2024</p>
           </div>
           <div className="text-right">
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            <button className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
               Upgrade Plan
             </button>
           </div>

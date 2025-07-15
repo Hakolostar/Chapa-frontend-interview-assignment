@@ -125,8 +125,8 @@ const AnalyticsPage: React.FC = () => {
       change: '+2.1%',
       trend: 'up',
       icon: Activity,
-      color: 'text-emerald-600',
-      bgColor: 'bg-emerald-100 dark:bg-emerald-900/30'
+      color: 'text-orange-600',
+      bgColor: 'bg-orange-100 dark:bg-orange-900/30'
     }
   ];
 
@@ -163,7 +163,7 @@ const AnalyticsPage: React.FC = () => {
           <select
             value={selectedPeriod}
             onChange={(e) => setSelectedPeriod(e.target.value)}
-            className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
+            className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500"
           >
             <option value="daily">Daily</option>
             <option value="weekly">Weekly</option>
@@ -171,7 +171,7 @@ const AnalyticsPage: React.FC = () => {
             <option value="yearly">Yearly</option>
           </select>
           
-          <button className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+          <button className="flex items-center space-x-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
             <Download className="w-4 h-4" />
             <span>Export</span>
           </button>

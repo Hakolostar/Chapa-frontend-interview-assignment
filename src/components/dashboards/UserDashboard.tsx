@@ -75,13 +75,13 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ onNavigate }) => {
       </div>
 
       {/* Wallet Balance */}
-      <Card className="bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-700 border border-blue-200 dark:border-blue-600">
+      <Card className="bg-gradient-to-r from-primary-100 to-primary-200 dark:from-primary-800 dark:to-primary-700 border border-primary-200 dark:border-primary-600">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-blue-600 dark:text-blue-300 text-sm font-medium">Wallet Balance</p>
-            <p className="text-3xl font-bold text-blue-800 dark:text-blue-100">{formatAmount(user?.balance || 0)}</p>
+            <p className="text-primary-600 dark:text-primary-300 text-sm font-medium">Wallet Balance</p>
+            <p className="text-3xl font-bold text-primary-800 dark:text-primary-100">{formatAmount(user?.balance || 0)}</p>
           </div>
-          <Wallet className="w-12 h-12 text-blue-500 dark:text-blue-400" />
+          <Wallet className="w-12 h-12 text-primary-500 dark:text-primary-400" />
         </div>
       </Card>
 
@@ -90,7 +90,7 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <button 
             onClick={handleSendMoneyClick}
-            className="flex items-center justify-center space-x-3 p-4 bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-700 text-blue-800 dark:text-blue-100 border border-blue-200 dark:border-blue-600 rounded-lg hover:from-blue-200 hover:to-blue-300 dark:hover:from-blue-700 dark:hover:to-blue-600 transition-all duration-200 transform hover:scale-105"
+            className="flex items-center justify-center space-x-3 p-4 bg-gradient-to-r from-primary-100 to-primary-200 dark:from-primary-800 dark:to-primary-700 text-primary-800 dark:text-primary-100 border border-primary-200 dark:border-primary-600 rounded-lg hover:from-primary-200 hover:to-primary-300 dark:hover:from-primary-700 dark:hover:to-primary-600 transition-all duration-200 transform hover:scale-105"
           >
             <Send className="w-6 h-6" />
             <span className="font-semibold">Send Money</span>

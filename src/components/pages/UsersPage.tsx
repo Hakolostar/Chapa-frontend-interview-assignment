@@ -137,7 +137,7 @@ const UsersPage: React.FC = () => {
       case 'super_admin':
         return 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200';
       case 'admin':
-        return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
+        return 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200';
       case 'user':
         return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
       default:
@@ -162,13 +162,13 @@ const UsersPage: React.FC = () => {
           <p className="text-gray-600 dark:text-gray-400">Manage and monitor user accounts</p>
         </div>
         <div className="flex space-x-3">
-          <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+          <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-gray-700 dark:text-gray-300">
             <Download className="w-4 h-4" />
             <span>Export</span>
           </button>
           <button 
             onClick={() => setShowAddUser(true)}
-            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="flex items-center space-x-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
           >
             <UserPlus className="w-4 h-4" />
             <span>Add User</span>
@@ -178,23 +178,23 @@ const UsersPage: React.FC = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card className="bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-700 border border-blue-200 dark:border-blue-600">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-blue-600 dark:text-blue-300 text-sm font-medium">Total Users</p>
-              <p className="text-2xl font-bold text-blue-800 dark:text-blue-100">{userStats.total}</p>
-            </div>
-            <Users className="w-8 h-8 text-blue-500 dark:text-blue-400" />
-          </div>
-        </Card>
-
         <Card className="bg-gradient-to-r from-green-100 to-green-200 dark:from-green-800 dark:to-green-700 border border-green-200 dark:border-green-600">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-green-600 dark:text-green-300 text-sm font-medium">Active Users</p>
-              <p className="text-2xl font-bold text-green-800 dark:text-green-100">{userStats.active}</p>
+              <p className="text-green-600 dark:text-green-300 text-sm font-medium">Total Users</p>
+              <p className="text-2xl font-bold text-green-800 dark:text-green-100">{userStats.total}</p>
             </div>
-            <UserCheck className="w-8 h-8 text-green-500 dark:text-green-400" />
+            <Users className="w-8 h-8 text-green-500 dark:text-green-400" />
+          </div>
+        </Card>
+
+        <Card className="bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-700 border border-blue-200 dark:border-blue-600">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-blue-600 dark:text-blue-300 text-sm font-medium">Active Users</p>
+              <p className="text-2xl font-bold text-blue-800 dark:text-blue-100">{userStats.active}</p>
+            </div>
+            <UserCheck className="w-8 h-8 text-blue-500 dark:text-blue-400" />
           </div>
         </Card>
 
@@ -230,7 +230,7 @@ const UsersPage: React.FC = () => {
               placeholder="Search users..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             />
           </div>
 
@@ -240,7 +240,7 @@ const UsersPage: React.FC = () => {
             <select
               value={filterRole}
               onChange={(e) => setFilterRole(e.target.value)}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             >
               <option value="all">All Roles</option>
               <option value="user">Users</option>
@@ -257,7 +257,7 @@ const UsersPage: React.FC = () => {
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -277,7 +277,7 @@ const UsersPage: React.FC = () => {
                     type="checkbox"
                     checked={selectedUsers.length === filteredUsers.length && filteredUsers.length > 0}
                     onChange={handleSelectAll}
-                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                   />
                 </th>
                 <th className="text-left py-3 px-4 font-medium text-gray-700 dark:text-gray-300">User</th>
@@ -296,12 +296,12 @@ const UsersPage: React.FC = () => {
                       type="checkbox"
                       checked={selectedUsers.includes(user.id)}
                       onChange={() => handleSelectUser(user.id)}
-                      className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                      className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                     />
                   </td>
                   <td className="py-3 px-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center flex-shrink-0">
                         <span className="text-white font-semibold text-sm">
                           {user.name.charAt(0).toUpperCase()}
                         </span>
@@ -356,7 +356,7 @@ const UsersPage: React.FC = () => {
                         </button>
                       )}
                       <button
-                        className="p-1 text-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900 rounded-md transition-colors"
+                        className="p-1 text-primary-600 hover:bg-primary-100 dark:hover:bg-primary-900 rounded-md transition-colors"
                         title="View Details"
                       >
                         <Eye className="w-4 h-4" />

@@ -11,7 +11,7 @@ export const LogoIcon: React.FC<LogoIconProps> = ({
   className = '', 
   width,
   height,
-  size = 32
+  size = 40
 }) => {
   const iconWidth = width || size;
   const iconHeight = height || size;

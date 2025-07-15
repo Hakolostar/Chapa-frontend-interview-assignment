@@ -3,6 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 import { User, Shield, ShieldCheck } from 'lucide-react';
 import LoadingSpinner from '../common/LoadingSpinner';
 import Logo from '../common/Logo';
+import LoginBackground from './LoginBackground';
 
 const LoginForm: React.FC = () => {
   const [selectedRole, setSelectedRole] = useState<'user' | 'admin' | 'super_admin'>('user');
@@ -51,9 +52,13 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
-      <div className="max-w-md w-full">
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8">
+    <div className="min-h-screen relative flex items-center justify-center p-4">
+      {/* Stylish background with Chapa logo, wallet, and coin elements */}
+      <LoginBackground />
+      
+      {/* Login form content */}
+      <div className="relative z-10 max-w-md w-full">
+        <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-xl shadow-2xl p-8 border border-white/20 dark:border-gray-700/50">
           <div className="text-center mb-8">
             <div className="flex justify-center items-center mb-4">
               <Logo width={140} height={45} className="mb-2" />
@@ -68,7 +73,7 @@ const LoginForm: React.FC = () => {
                   key={option.value}
                   className={`relative flex items-center p-4 rounded-lg border-2 cursor-pointer transition-all ${
                     selectedRole === option.value
-                      ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20'
+                      ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/20'
                       : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'
                   }`}
                   onClick={() => setSelectedRole(option.value as any)}
@@ -82,7 +87,7 @@ const LoginForm: React.FC = () => {
                     className="sr-only"
                   />
                   <option.icon className={`w-5 h-5 mr-3 ${
-                    selectedRole === option.value ? 'text-blue-600' : 'text-gray-400 dark:text-gray-500'
+                    selectedRole === option.value ? 'text-primary-600' : 'text-gray-400 dark:text-gray-500'
                   }`} />
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
@@ -102,7 +107,7 @@ const LoginForm: React.FC = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+              className="w-full bg-primary-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
             >
               {isLoading ? (
                 <>

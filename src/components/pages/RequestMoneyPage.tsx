@@ -136,7 +136,7 @@ const RequestMoneyPage: React.FC<RequestMoneyPageProps> = ({ onNavigate }) => {
                   onClick={() => setShareMethod('email')}
                   className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
                     shareMethod === 'email'
-                      ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-400 shadow-sm'
+                      ? 'bg-white dark:bg-gray-600 text-primary-600 dark:text-primary-400 shadow-sm'
                       : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                   }`}
                 >
@@ -147,7 +147,7 @@ const RequestMoneyPage: React.FC<RequestMoneyPageProps> = ({ onNavigate }) => {
                   onClick={() => setShareMethod('link')}
                   className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
                     shareMethod === 'link'
-                      ? 'bg-white dark:bg-gray-600 text-blue-600 dark:text-blue-400 shadow-sm'
+                      ? 'bg-white dark:bg-gray-600 text-primary-600 dark:text-primary-400 shadow-sm'
                       : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                   }`}
                 >
@@ -163,7 +163,7 @@ const RequestMoneyPage: React.FC<RequestMoneyPageProps> = ({ onNavigate }) => {
                     <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Email will be sent to:</p>
                     <p className="font-medium text-gray-900 dark:text-white">{requesterEmail}</p>
                   </div>
-                  <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2">
+                  <button className="w-full bg-primary-600 text-white py-3 px-4 rounded-lg hover:bg-primary-700 transition-colors flex items-center justify-center space-x-2">
                     <Send className="w-4 h-4" />
                     <span>Send Email Request</span>
                   </button>
@@ -201,7 +201,7 @@ const RequestMoneyPage: React.FC<RequestMoneyPageProps> = ({ onNavigate }) => {
             <div className="flex space-x-4 mt-8">
               <button
                 onClick={handleNewRequest}
-                className="flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+                className="flex-1 bg-primary-600 text-white py-3 px-4 rounded-lg hover:bg-primary-700 transition-colors"
               >
                 Create New Request
               </button>
@@ -253,7 +253,7 @@ const RequestMoneyPage: React.FC<RequestMoneyPageProps> = ({ onNavigate }) => {
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     placeholder="0.00"
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     required
                     min="0.01"
                     step="0.01"
@@ -273,7 +273,7 @@ const RequestMoneyPage: React.FC<RequestMoneyPageProps> = ({ onNavigate }) => {
                     value={requesterEmail}
                     onChange={(e) => setRequesterEmail(e.target.value)}
                     placeholder="example@email.com"
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     required
                   />
                 </div>
@@ -291,7 +291,7 @@ const RequestMoneyPage: React.FC<RequestMoneyPageProps> = ({ onNavigate }) => {
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="What is this payment for?"
                     rows={4}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
                     required
                   />
                 </div>
@@ -301,7 +301,7 @@ const RequestMoneyPage: React.FC<RequestMoneyPageProps> = ({ onNavigate }) => {
               <button
                 type="submit"
                 disabled={isLoading || !amount || !requesterEmail || !description}
-                className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors flex items-center justify-center space-x-2"
+                className="w-full bg-primary-600 text-white py-3 px-4 rounded-lg hover:bg-primary-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors flex items-center justify-center space-x-2"
               >
                 {isLoading ? (
                   <LoadingSpinner size="sm" />
@@ -320,7 +320,7 @@ const RequestMoneyPage: React.FC<RequestMoneyPageProps> = ({ onNavigate }) => {
           <Card title="How it Works">
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-sm font-bold">
+                <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-full flex items-center justify-center text-sm font-bold">
                   1
                 </div>
                 <div>
@@ -329,7 +329,7 @@ const RequestMoneyPage: React.FC<RequestMoneyPageProps> = ({ onNavigate }) => {
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-sm font-bold">
+                <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-full flex items-center justify-center text-sm font-bold">
                   2
                 </div>
                 <div>
@@ -338,7 +338,7 @@ const RequestMoneyPage: React.FC<RequestMoneyPageProps> = ({ onNavigate }) => {
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-sm font-bold">
+                <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-full flex items-center justify-center text-sm font-bold">
                   3
                 </div>
                 <div>

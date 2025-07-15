@@ -1,0 +1,5 @@
+<!-- Simple, bold Chapa "C" favicon for maximum visibility -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" fill="#8dc63f" rx="6"/>
+  <path fill="white" stroke="white" stroke-width="1" d="M8 11 Q8 8 11 8 L21 8 Q24 8 24 11 L24 13 L20 13 L20 11 Q20 10 19 10 L13 10 Q12 10 12 11 L12 21 Q12 22 13 22 L19 22 Q20 22 20 21 L20 19 L24 19 L24 21 Q24 24 21 24 L11 24 Q8 24 8 21 Z"/>
+</svg>

@@ -182,7 +182,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
         {/* Sidebar Header */}
         <div className="flex items-center justify-between h-16 px-6 border-b dark:border-gray-700 flex-shrink-0">
           <div className="flex items-center space-x-2">
-            <Logo width={100} height={32} className="hover:scale-105 transition-transform duration-200" />
+            <Logo width={120} height={40} className="hover:scale-105 transition-transform duration-200" />
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
@@ -201,8 +201,8 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
                 onClick={() => handleNavigation(item.page)}
                 className={`sidebar-nav-item w-full flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
                   currentPage === item.page
-                    ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700'
+                    ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
               >
                 <item.icon className="w-5 h-5" />
@@ -222,7 +222,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
                   <button
                     key={index}
                     onClick={action.action}
-                    className="sidebar-nav-item w-full flex items-center space-x-3 px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                    className="sidebar-nav-item w-full flex items-center space-x-3 px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors"
                   >
                     <action.icon className="w-5 h-5" />
                     <span>{action.label}</span>
@@ -243,8 +243,8 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
                   onClick={() => handleNavigation(item.page)}
                   className={`sidebar-nav-item w-full flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
                     currentPage === item.page
-                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700'
+                      ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20'
                   }`}
                 >
                   <item.icon className="w-5 h-5" />
@@ -280,7 +280,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
               
               {/* Mobile Logo - shown only on small screens when sidebar is hidden */}
               <div className="lg:hidden mr-4">
-                <Logo width={80} height={24} />
+                <Logo width={100} height={32} />
               </div>
               
               {/* Search Bar */}
@@ -291,7 +291,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
                   placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                 />
               </div>
             </div>
@@ -302,7 +302,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
               <div className="relative" ref={notificationRef}>
                 <button 
                   onClick={() => setNotificationDropdownOpen(!notificationDropdownOpen)}
-                  className="relative p-2 text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="relative p-2 text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <Bell className="w-5 h-5" />
                   {unreadNotifications > 0 && (
@@ -321,9 +321,9 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
                     </div>
                     <div className="max-h-96 overflow-y-auto">
                       {notifications.map((notification) => (
-                        <div key={notification.id} className={`p-4 border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 ${notification.unread ? 'bg-blue-50 dark:bg-blue-900/20' : ''}`}>
+                        <div key={notification.id} className={`p-4 border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 ${notification.unread ? 'bg-primary-50 dark:bg-primary-900/20' : ''}`}>
                           <div className="flex items-start space-x-3">
-                            <div className={`w-2 h-2 rounded-full mt-2 ${notification.unread ? 'bg-blue-500' : 'bg-gray-300'}`} />
+                            <div className={`w-2 h-2 rounded-full mt-2 ${notification.unread ? 'bg-primary-500' : 'bg-gray-300'}`} />
                             <div className="flex-1">
                               <h4 className="text-sm font-medium text-gray-900 dark:text-white">{notification.title}</h4>
                               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{notification.message}</p>
@@ -334,7 +334,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
                       ))}
                     </div>
                     <div className="p-3 border-t dark:border-gray-700">
-                      <button className="w-full text-center text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">
+                      <button className="w-full text-center text-sm text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300">
                         View all notifications
                       </button>
                     </div>
@@ -345,7 +345,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
               {/* Chat Button */}
               <button 
                 onClick={() => setChatOpen(!chatOpen)}
-                className="p-2 text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="p-2 text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <MessageCircle className="w-5 h-5" />
               </button>
@@ -365,7 +365,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
                   onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
                   className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                 >
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                  <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center">
                     <span className="text-white font-semibold text-sm">
                       {user?.name?.charAt(0).toUpperCase()}
                     </span>
@@ -384,7 +384,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
                   <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-lg border dark:border-gray-700 z-50">
                     <div className="p-4 border-b dark:border-gray-700">
                       <div className="flex items-center space-x-3">
-                        <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center flex-shrink-0">
                           <span className="text-white font-semibold text-lg">
                             {user?.name?.charAt(0).toUpperCase()}
                           </span>
@@ -452,10 +452,10 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
                   <div className={`max-w-xs px-3 py-2 rounded-lg ${
                     message.isSupport 
                       ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white' 
-                      : 'bg-blue-600 text-white'
+                      : 'bg-primary-600 text-white'
                   }`}>
                     <p className="text-sm">{message.message}</p>
-                    <p className={`text-xs mt-1 ${message.isSupport ? 'text-gray-500 dark:text-gray-400' : 'text-blue-100'}`}>
+                    <p className={`text-xs mt-1 ${message.isSupport ? 'text-gray-500 dark:text-gray-400' : 'text-primary-100'}`}>
                       {message.time}
                     </p>
                   </div>
@@ -467,9 +467,9 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage = 'dashboard', on
                 <input
                   type="text"
                   placeholder="Type your message..."
-                  className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                 />
-                <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                <button className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
                   Send
                 </button>
               </div>

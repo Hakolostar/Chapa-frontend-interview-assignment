@@ -29,6 +29,10 @@ interface SendMoneyFormData {
   sendMethod: 'instant' | 'standard';
 }
 
+interface SendMoneyPageProps {
+  onNavigate?: (page: string) => void;
+}
+
 interface RecentRecipient {
   id: string;
   name: string;
@@ -40,7 +44,7 @@ interface RecentRecipient {
   frequency: number;
 }
 
-const SendMoneyPage: React.FC = () => {
+const SendMoneyPage: React.FC<SendMoneyPageProps> = ({ onNavigate }) => {
   const { user } = useAuth();
   const [formData, setFormData] = useState<SendMoneyFormData>({
     recipientType: 'email',
@@ -222,6 +226,12 @@ const SendMoneyPage: React.FC = () => {
   const fee = calculateFee(amount, formData.sendMethod);
   const total = amount + fee;
 
+  const handleBackToDashboard = () => {
+    if (onNavigate) {
+      onNavigate('dashboard');
+    }
+  };
+
   if (success && currentStep === 3) {
     return (
       <div className="space-y-6">
@@ -262,7 +272,7 @@ const SendMoneyPage: React.FC = () => {
             </div>
             <button
               onClick={resetForm}
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              className="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors"
             >
               Send More Money
             </button>
@@ -275,6 +285,16 @@ const SendMoneyPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
+      <div className="flex items-center space-x-4 mb-6">
+        <button
+          onClick={handleBackToDashboard}
+          className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+        >
+          <ArrowLeft className="w-5 h-5" />
+          <span>Back to Dashboard</span>
+        </button>
+      </div>
+      
       <div className="flex items-center space-x-4 mb-6">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Send Money</h1>
         <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
@@ -289,14 +309,14 @@ const SendMoneyPage: React.FC = () => {
           <div key={step} className="flex items-center">
             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
               currentStep >= step
-                ? 'bg-blue-600 text-white'
+                ? 'bg-primary-600 text-white'
                 : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
             }`}>
               {step}
             </div>
             {step < 3 && (
               <div className={`w-12 h-0.5 ${
-                currentStep > step ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'
+                currentStep > step ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700'
               }`} />
             )}
           </div>
@@ -326,7 +346,7 @@ const SendMoneyPage: React.FC = () => {
                     onClick={() => handleInputChange('recipientType', 'email')}
                     className={`flex-1 flex items-center justify-center space-x-2 py-2 px-4 rounded-md transition-colors ${
                       formData.recipientType === 'email'
-                        ? 'bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 shadow-sm'
+                        ? 'bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 shadow-sm'
                         : 'text-gray-600 dark:text-gray-400'
                     }`}
                   >
@@ -338,7 +358,7 @@ const SendMoneyPage: React.FC = () => {
                     onClick={() => handleInputChange('recipientType', 'phone')}
                     className={`flex-1 flex items-center justify-center space-x-2 py-2 px-4 rounded-md transition-colors ${
                       formData.recipientType === 'phone'
-                        ? 'bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 shadow-sm'
+                        ? 'bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 shadow-sm'
                         : 'text-gray-600 dark:text-gray-400'
                     }`}
                   >
@@ -357,7 +377,7 @@ const SendMoneyPage: React.FC = () => {
                   type={formData.recipientType === 'email' ? 'email' : 'tel'}
                   value={formData.recipient}
                   onChange={(e) => handleInputChange('recipient', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder={formData.recipientType === 'email' ? 'recipient@example.com' : '+251 9XX XXX XXX'}
                 />
               </div>
@@ -372,7 +392,7 @@ const SendMoneyPage: React.FC = () => {
                     type="number"
                     value={formData.amount}
                     onChange={(e) => handleInputChange('amount', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 pl-12"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 pl-12"
                     placeholder="0.00"
                     step="0.01"
                     min="1"
@@ -394,7 +414,7 @@ const SendMoneyPage: React.FC = () => {
                   type="text"
                   value={formData.description}
                   onChange={(e) => handleInputChange('description', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="What's this for?"
                   maxLength={100}
                 />
@@ -413,7 +433,7 @@ const SendMoneyPage: React.FC = () => {
                       value="instant"
                       checked={formData.sendMethod === 'instant'}
                       onChange={(e) => handleInputChange('sendMethod', e.target.value)}
-                      className="text-blue-600 focus:ring-blue-500"
+                      className="text-primary-600 focus:ring-primary-500"
                     />
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
@@ -430,7 +450,7 @@ const SendMoneyPage: React.FC = () => {
                       value="standard"
                       checked={formData.sendMethod === 'standard'}
                       onChange={(e) => handleInputChange('sendMethod', e.target.value)}
-                      className="text-blue-600 focus:ring-blue-500"
+                      className="text-primary-600 focus:ring-primary-500"
                     />
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
@@ -447,7 +467,7 @@ const SendMoneyPage: React.FC = () => {
               <button
                 onClick={handleContinue}
                 disabled={!formData.recipient || !formData.amount}
-                className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                className="w-full bg-primary-600 text-white py-3 px-4 rounded-lg hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
               >
                 <Send className="w-4 h-4" />
                 <span>Continue</span>
@@ -487,7 +507,7 @@ const SendMoneyPage: React.FC = () => {
                   onClick={() => selectRecipient(recipient)}
                   className="w-full flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left"
                 >
-                  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="text-white font-semibold text-sm">
                       {recipient.name.charAt(0).toUpperCase()}
                     </span>
@@ -546,7 +566,7 @@ const SendMoneyPage: React.FC = () => {
               </button>
               <button
                 onClick={handleConfirm}
-                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="flex-1 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
               >
                 Confirm
               </button>
@@ -570,7 +590,7 @@ const SendMoneyPage: React.FC = () => {
                 type="password"
                 value={pin}
                 onChange={(e) => setPin(e.target.value.slice(0, 4))}
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-center text-2xl tracking-widest"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-center text-2xl tracking-widest"
                 placeholder="••••"
                 maxLength={4}
               />
@@ -585,7 +605,7 @@ const SendMoneyPage: React.FC = () => {
               <button
                 onClick={handlePinSubmit}
                 disabled={isLoading || pin.length !== 4}
-                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center justify-center space-x-2"
+                className="flex-1 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors disabled:opacity-50 flex items-center justify-center space-x-2"
               >
                 {isLoading ? (
                   <LoadingSpinner size="sm" />
