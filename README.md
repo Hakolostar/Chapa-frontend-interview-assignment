@@ -353,37 +353,6 @@ The build output will be in the `dist/` directory, optimized for deployment.
 - **Role-Based Security**: Comprehensive access control and permissions
 - **Modern Development**: Latest React patterns and best practices
 
-## 🤝 Contributing
-
-### Development Workflow
-1. **Fork the repository**
-2. **Create a feature branch**
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-3. **Make your changes** following the development guidelines
-4. **Run quality checks**
-   ```bash
-   npm run lint
-   npm run build
-   ```
-5. **Commit your changes**
-   ```bash
-   git commit -m 'Add some amazing feature'
-   ```
-6. **Push to the branch**
-   ```bash
-   git push origin feature/amazing-feature
-   ```
-7. **Open a Pull Request**
-
-### Code Standards
-- Follow TypeScript best practices
-- Maintain existing code style and patterns
-- Add appropriate error handling
-- Update documentation for new features
-- Ensure mobile responsiveness
-
 ## 📚 Documentation
 
 ### API Documentation
