@@ -20,9 +20,26 @@ import ProtectedRoute from './components/routes/ProtectedRoute';
 import LoadingSpinner from './components/common/LoadingSpinner';
 import { hasPageAccess, getDefaultPageForRole } from './utils/permissions';
 
+
+import { useEffect, useRef } from 'react';
+
 const AppContent: React.FC = () => {
   const { user, isLoading, isAuthenticated } = useAuth();
   const [currentPage, setCurrentPage] = useState('dashboard');
+  const prevUserRole = useRef<string | undefined>(undefined);
+
+  // Always redirect to the correct dashboard after login or role change
+  useEffect(() => {
+    if (isAuthenticated && user?.role && prevUserRole.current !== user.role) {
+      const defaultPage = getDefaultPageForRole(user.role);
+      setCurrentPage(defaultPage);
+      prevUserRole.current = user.role;
+    }
+    if (!isAuthenticated) {
+      setCurrentPage('dashboard'); // Reset to dashboard or login page after logout
+      prevUserRole.current = undefined;
+    }
+  }, [isAuthenticated, user?.role]);
 
   const handleNavigation = (page: string) => {
     // Check if user has access to the requested page
